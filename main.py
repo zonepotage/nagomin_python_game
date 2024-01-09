@@ -23,4 +23,4 @@ def get_logger():
 if __name__ == '__main__':
     logger = get_logger()
     logger.info('アプリケーションを起動')
-    gameApp = GameApp()
+    gameApp = GameApp(logger)
