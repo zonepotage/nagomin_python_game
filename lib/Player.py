@@ -36,7 +36,6 @@ class Player(AbsClass):
         """
         オブジェクト描画
         """
-        self._circle.draw()
         pyxel.blt(self._circle.x - self.CIRCLE_RADIUS, self._circle.y - self.CIRCLE_RADIUS, 0, 0, 0, self.CIRCLE_SIZE, self.CIRCLE_SIZE, pyxel.COLOR_WHITE)
 
     def is_collision_window(self):
