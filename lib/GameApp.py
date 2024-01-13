@@ -57,6 +57,9 @@ class GameApp(AbsClass):
         self._last_game_score = 0
         self._high_score = 0
 
+        # アセットオープン
+        pyxel.load('../resource.pyxres')
+
         # pyxel開始
         pyxel.run(self.update, self.draw)
 

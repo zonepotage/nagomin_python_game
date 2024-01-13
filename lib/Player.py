@@ -37,6 +37,7 @@ class Player(AbsClass):
         オブジェクト描画
         """
         self._circle.draw()
+        pyxel.blt(self._circle.x - self.CIRCLE_RADIUS, self._circle.y - self.CIRCLE_RADIUS, 0, 0, 0, self.CIRCLE_SIZE, self.CIRCLE_SIZE, pyxel.COLOR_WHITE)
 
     def is_collision_window(self):
         """
@@ -52,12 +53,14 @@ class Player(AbsClass):
         if self._circle.y + self._circle.r >= self._game_object.window_object.height - 1:
             self.logger.debug('地上墜落検知')
             self._circle.move_absolute(self._circle.x, self._game_object.window_object.height - self._circle.r - 1)
+            pyxel.blt(self._circle.x - self.CIRCLE_RADIUS,  self._game_object.window_object.height - (self._circle.r * 2) - 1, 0, 0, 0, self.CIRCLE_SIZE, self.CIRCLE_SIZE, pyxel.COLOR_WHITE)
             return True
 
         # 天井衝突
         elif self._circle.y - self._circle.r <= 0:
             self.logger.debug('天井衝突検知')
             self._circle.move_absolute(self._circle.x, self._circle.r)
+            pyxel.blt(self._circle.x - self.CIRCLE_RADIUS, 0, 0, 0, 0, self.CIRCLE_SIZE, self.CIRCLE_SIZE, pyxel.COLOR_WHITE)
             return True
 
         return False
