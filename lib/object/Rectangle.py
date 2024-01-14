@@ -23,7 +23,7 @@ class Rectangle:
         self._y2 = y + height
 
     def __str__(self):
-        return 'type:rectangle, x:%s, y:%s, width:%s, height:%s, color:%s' % (self.x, self.y, self.width, self.height, self.color)
+        return 'type:rectangle, x:%s, y:%s, x2:%s, y2:%s, width:%s, height:%s, color:%s' % (self.x, self.y, self._x2, self._y2, self.width, self.height, self.color)
 
     @property
     def x(self):
@@ -69,6 +69,8 @@ class Rectangle:
         """
         self._x += x
         self._y += y
+        self._x2 += x
+        self._y2 += y
 
     def move_absolute(self, x, y):
         """
@@ -79,10 +81,13 @@ class Rectangle:
         """
         self._x = x
         self._y = y
+        self._x2 = x + self._width
+        self._y2 = y + self._width
 
     def is_conflict(self, target):
         """
         衝突判定
+
         @param target: 判定対象の矩形オブジェクト
         @return: 判定結果
         """
